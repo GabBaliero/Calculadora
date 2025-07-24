@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculadora.MainPage"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource CustomLightBlue}, Dark={StaticResource CustomDarkGray}}"
+             Shell.ForegroundColor="{AppThemeBinding Light=Black, Dark=White}">
+
+    <ContentPage.Resources>
+        <Style x:Key="BaseCalculatorButtonStyle"
+               TargetType="Button">
+            <Setter Property="WidthRequest" 
+                    Value="90"/>
+            <Setter Property="HeightRequest" 
+                    Value="90"/>
+            <Setter Property="CornerRadius" 
+                    Value="50"/>
+            <Setter Property="TextColor" 
+                    Value="{AppThemeBinding Light=Black, Dark=White}"/>
+            <Setter Property="FontSize" 
+                    Value="32"/>
+            <Setter Property="FontAttributes" 
+                    Value="Bold"/>
+        </Style>
+        <Style x:Key="NumberButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource BaseCalculatorButtonStyle}">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource CustomLightBlue}, 
+                                            Dark={StaticResource CustomDarkGray}}"/>
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light=DarkSlateGray, 
+                                            Dark={StaticResource CustomLightBlue}}"/>
+        </Style>
+        <Style x:Key="OperatorButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource BaseCalculatorButtonStyle}">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource CustomBlue}, 
+                                            Dark={StaticResource CustomDarkBlue}}"/>
+        </Style>
+        <Style x:Key="ACOperatorButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource BaseCalculatorButtonStyle}">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource CustomLightGreen}, 
+                                            Dark={StaticResource CustomDarkGreen}}"/>
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource CustomDarkGreen},
+                                            Dark={StaticResource CustomLightGreen}}"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="250, *">
+        <Border StrokeShape="RoundRectangle 0 0 25 25"
+                Stroke="Transparent"
+                BackgroundColor="{AppThemeBinding Light={StaticResource CustomLightBlue},
+                                                  Dark={StaticResource CustomDarkGray}}">
+            <VerticalStackLayout VerticalOptions="End" Margin="10" Spacing="-15">
+                <Entry Text="{Binding ExpressionDisplay}"
+                       HorizontalTextAlignment="End"
+                       FontSize="75"/>
+                <Entry Text="{Binding ResultDisplay}"
+                       HorizontalTextAlignment="End"
+                       FontSize="50"/>
+            </VerticalStackLayout>
+        </Border>
+        <Grid Grid.Row="1" Padding="12" RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*">
+            <!--Operators on line 0-->
+            <Button Text="AC" 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Style="{StaticResource ACOperatorButtonStyle}"/>
+            <Button Text="( )" 
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Style="{StaticResource OperatorButtonStyle}"/>
+            <Button Text="%" 
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Style="{StaticResource OperatorButtonStyle}"/>
+            <Button Text="÷" 
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Style="{StaticResource OperatorButtonStyle}"/>
+            <!--Operators on column 3-->
+            <Button Text="×" 
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Style="{StaticResource OperatorButtonStyle}"/>
+            <Button Text="-" 
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Style="{StaticResource OperatorButtonStyle}"/>
+            <Button Text="+" 
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Style="{StaticResource OperatorButtonStyle}"/>
+            <Button Text="=" 
+                    Grid.Row="4"
+                    Grid.Column="3"
+                    Style="{StaticResource OperatorButtonStyle}"/>
+            <!--line 1-->
+            <Button Text="7" 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <Button Text="8" 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <Button Text="9" 
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <!--line 2-->
+            <Button Text="4" 
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <Button Text="5" 
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <Button Text="6" 
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <!--line 3-->
+            <Button Text="1" 
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <Button Text="2" 
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <Button Text="3" 
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <!--line 4-->
+            <Button Text="0" 
+                    Grid.Row="4"
+                    Grid.Column="0"
+                        Style="{StaticResource NumberButtonStyle}"/>
+            <Button Text="," 
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Style="{StaticResource NumberButtonStyle}"/>
+            <Button Text="⬅︎" 
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Style="{StaticResource NumberButtonStyle}"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>
