@@ -1044,3 +1044,4 @@ C:\Users\AIS\source\repos\Calculadora\Calculadora\obj\Debug\net8.0-android\stamp
 C:\Users\AIS\source\repos\Calculadora\Calculadora\obj\Debug\net8.0-android\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\AIS\source\repos\Calculadora\Calculadora\obj\Debug\net8.0-android\android\assets\CommunityToolkit.Mvvm.dll
 C:\Users\AIS\source\repos\Calculadora\Calculadora\obj\Debug\net8.0-android\android\assets\CommunityToolkit.Mvvm.pdb
+C:\Users\AIS\source\repos\Calculadora\Calculadora\obj\Debug\net8.0-android\Calculadora.sourcelink.json

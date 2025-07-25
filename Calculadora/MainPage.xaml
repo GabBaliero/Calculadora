@@ -58,7 +58,7 @@
             <VerticalStackLayout VerticalOptions="End" Margin="10" Spacing="-15">
                 <Entry Text="{Binding ExpressionDisplay}"
                        HorizontalTextAlignment="End"
-                       FontSize="75"/>
+                       FontSize="{Binding ExpressionFontSize}"/>
                 <Entry Text="{Binding ResultDisplay}"
                        HorizontalTextAlignment="End"
                        FontSize="50"/>
@@ -69,7 +69,8 @@
             <Button Text="AC" 
                     Grid.Row="0"
                     Grid.Column="0"
-                    Style="{StaticResource ACOperatorButtonStyle}"/>
+                    Style="{StaticResource ACOperatorButtonStyle}"
+                    Command="{Binding ACbutton}"/>
             <Button Text="( )" 
                     Grid.Row="0"
                     Grid.Column="1"
@@ -81,68 +82,97 @@
             <Button Text="÷" 
                     Grid.Row="0"
                     Grid.Column="3"
-                    Style="{StaticResource OperatorButtonStyle}"/>
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Command="{Binding OperatorsButton}"
+                    CommandParameter="÷"/>
             <!--Operators on column 3-->
             <Button Text="×" 
                     Grid.Row="1"
                     Grid.Column="3"
-                    Style="{StaticResource OperatorButtonStyle}"/>
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Command="{Binding OperatorsButton}"
+                    CommandParameter="×"/>
             <Button Text="-" 
                     Grid.Row="2"
                     Grid.Column="3"
-                    Style="{StaticResource OperatorButtonStyle}"/>
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Command="{Binding OperatorsButton}"
+                    CommandParameter="-"/>
             <Button Text="+" 
                     Grid.Row="3"
                     Grid.Column="3"
-                    Style="{StaticResource OperatorButtonStyle}"/>
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Command="{Binding OperatorsButton}"
+                    CommandParameter="+"/>
             <Button Text="=" 
                     Grid.Row="4"
                     Grid.Column="3"
-                    Style="{StaticResource OperatorButtonStyle}"/>
-            <!--line 1-->
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Command="{Binding EqualsButton}"/>
+            <!--line 1 ( 7 - 8 - 9 )-->
             <Button Text="7" 
                     Grid.Row="1"
                     Grid.Column="0"
-                    Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="7"/>
             <Button Text="8" 
                     Grid.Row="1"
                     Grid.Column="1"
-                    Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="8"/>
             <Button Text="9" 
                     Grid.Row="1"
                     Grid.Column="2"
-                    Style="{StaticResource NumberButtonStyle}"/>
-            <!--line 2-->
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="9"/>
+            <!--line 2 ( 4 - 5 - 6 )-->
             <Button Text="4" 
                     Grid.Row="2"
                     Grid.Column="0"
-                    Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="4"/>
             <Button Text="5" 
                     Grid.Row="2"
                     Grid.Column="1"
-                    Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="5"/>
             <Button Text="6" 
                     Grid.Row="2"
                     Grid.Column="2"
-                    Style="{StaticResource NumberButtonStyle}"/>
-            <!--line 3-->
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="6"/>
+            <!--line 3 ( 1 - 2 - 3 )-->
             <Button Text="1" 
                     Grid.Row="3"
                     Grid.Column="0"
-                    Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="1"/>
             <Button Text="2" 
                     Grid.Row="3"
                     Grid.Column="1"
-                    Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="2"/>
             <Button Text="3" 
                     Grid.Row="3"
                     Grid.Column="2"
-                    Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="3"/>
             <!--line 4-->
             <Button Text="0" 
                     Grid.Row="4"
                     Grid.Column="0"
-                        Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter="0"/>
             <Button Text="," 
                     Grid.Row="4"
                     Grid.Column="1"
@@ -150,7 +180,8 @@
             <Button Text="⬅︎" 
                     Grid.Row="4"
                     Grid.Column="2"
-                    Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding BackscapeButton}"/>
         </Grid>
     </Grid>
 
