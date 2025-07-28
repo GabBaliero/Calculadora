@@ -74,11 +74,14 @@
             <Button Text="( )" 
                     Grid.Row="0"
                     Grid.Column="1"
+                    Command="{Binding ParenthesisCommand}"
                     Style="{StaticResource OperatorButtonStyle}"/>
             <Button Text="%" 
                     Grid.Row="0"
                     Grid.Column="2"
-                    Style="{StaticResource OperatorButtonStyle}"/>
+                    Style="{StaticResource OperatorButtonStyle}"
+                    Command="{Binding PorcentageCommand}"
+                    CommandParameter="%"/>
             <Button Text="÷" 
                     Grid.Row="0"
                     Grid.Column="3"
@@ -176,7 +179,9 @@
             <Button Text="," 
                     Grid.Row="4"
                     Grid.Column="1"
-                    Style="{StaticResource NumberButtonStyle}"/>
+                    Style="{StaticResource NumberButtonStyle}"
+                    Command="{Binding NumericButtons}"
+                    CommandParameter=","/>
             <Button Text="⬅︎" 
                     Grid.Row="4"
                     Grid.Column="2"
