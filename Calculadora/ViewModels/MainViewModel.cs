@@ -23,14 +23,15 @@ namespace Calculadora.ViewModel
         private string _resultDisplay = string.Empty;
         [ObservableProperty]
         private bool _openParenthesis = true;
+        [ObservableProperty]
+        private int _expressionFontSize = 75;
 
-        public int ExpressionFontSize { get; set; }
         public string StoreFirstExpression { get; set; }
         public string StoreSecondExpression { get; set; }
 
         public MainViewModel()
         {
-            ExpressionFontSize = 75;
+            FontSizeResizer();
         }
 
         public ICommand NumericButtons => new Command<string>(value =>
@@ -42,6 +43,7 @@ namespace Calculadora.ViewModel
         {
             ExpressionDisplay = string.Empty;
             ResultDisplay = string.Empty;
+            FontSizeResizer();
         });
 
         public ICommand BackscapeButton => new Command(_ =>
@@ -50,6 +52,8 @@ namespace Calculadora.ViewModel
             {
                 ExpressionDisplay = ExpressionDisplay.Remove(ExpressionDisplay.Length - 1);
             }catch { }
+
+            FontSizeResizer();
         });
 
         public ICommand OperatorsButton => new Command<string>(value =>
@@ -58,6 +62,7 @@ namespace Calculadora.ViewModel
             {
                 StoreFirstExpression = ExpressionDisplay;
                 ExpressionDisplay += value;
+                FontSizeResizer();
             }
         });
 
@@ -79,19 +84,16 @@ namespace Calculadora.ViewModel
                 ExpressionDisplay += ")";
 
             OpenParenthesis = !OpenParenthesis;
+            FontSizeResizer();
         });
 
         public ICommand PorcentageCommand => new Command(value =>
         {
-            if (!string.IsNullOrEmpty(ExpressionDisplay))
+            if (!string.IsNullOrEmpty(StoreFirstExpression) && !string.IsNullOrEmpty(ExpressionDisplay))
             {
-                ExpressionDisplay += value;
-                string fOp = StoreFirstExpression;
-                string expression = ExpressionDisplay;
-                string result = expression.Replace(fOp, "");
+                string baseValue = StoreFirstExpression;
+                string full = ExpressionDisplay;
             }
-            else
-                return;
         });
 
         public async Task<string> Calculate()
@@ -115,13 +117,40 @@ namespace Calculadora.ViewModel
             return Convert.ToDouble(result);
         }
         
-        static string FormatParenthesis(string param)
+        static string FormatParenthesis(string expression)
         {
-            if (char.IsDigit(param.First()))
-                param = param.Replace("(", "*(");
+            if (string.IsNullOrWhiteSpace(expression))
+                return expression;
+
+            var sb = new StringBuilder();
+
+            for (int i = 0; i < expression.Length; i++)
+            {
+                char current = expression[i];
+
+                if (current == '(')
+                    if (i > 0 && (char.IsDigit(expression[i - 1]) || expression[i - 1] == ')'))
+                        sb.Append("*(");
+                    else
+                        sb.Append("1*(");
+                else
+                    sb.Append(current);
+            }
+
+            return sb.ToString();
+        }
+
+        public void FontSizeResizer()
+        {
+            int length = ExpressionDisplay?.Length ?? 0;
+
+            if (length >= 12)
+                ExpressionFontSize = 45;
+            else if (length >= 6)
+                ExpressionFontSize = 60;
             else
-                param = param.Replace("(", "1*(");
-            return param;
+                ExpressionFontSize = 75;
+            //ExpressionFontSize = length >= 12 ? 45 : length >= 6 ? 60 : 75;
         }
     }
 }
