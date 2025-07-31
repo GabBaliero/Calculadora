@@ -31,7 +31,6 @@ namespace Calculadora.ViewModel
 
         public MainViewModel()
         {
-            FontSizeResizer();
         }
 
         public ICommand NumericButtons => new Command<string>(value =>
@@ -43,7 +42,6 @@ namespace Calculadora.ViewModel
         {
             ExpressionDisplay = string.Empty;
             ResultDisplay = string.Empty;
-            FontSizeResizer();
         });
 
         public ICommand BackscapeButton => new Command(_ =>
@@ -52,8 +50,6 @@ namespace Calculadora.ViewModel
             {
                 ExpressionDisplay = ExpressionDisplay.Remove(ExpressionDisplay.Length - 1);
             }catch { }
-
-            FontSizeResizer();
         });
 
         public ICommand OperatorsButton => new Command<string>(value =>
@@ -62,7 +58,6 @@ namespace Calculadora.ViewModel
             {
                 StoreFirstExpression = ExpressionDisplay;
                 ExpressionDisplay += value;
-                FontSizeResizer();
             }
         });
 
@@ -84,7 +79,6 @@ namespace Calculadora.ViewModel
                 ExpressionDisplay += ")";
 
             OpenParenthesis = !OpenParenthesis;
-            FontSizeResizer();
         });
 
         public ICommand PorcentageCommand => new Command(value =>
@@ -140,17 +134,5 @@ namespace Calculadora.ViewModel
             return sb.ToString();
         }
 
-        public void FontSizeResizer()
-        {
-            int length = ExpressionDisplay?.Length ?? 0;
-
-            if (length >= 12)
-                ExpressionFontSize = 45;
-            else if (length >= 6)
-                ExpressionFontSize = 60;
-            else
-                ExpressionFontSize = 75;
-            //ExpressionFontSize = length >= 12 ? 45 : length >= 6 ? 60 : 75;
-        }
     }
 }
